@@ -1,10 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Display Cell should create valid snapshot 1`] = `
+.c0 {
+  display: block;
+}
+
 <span
-  class=""
+  class="c0"
   data-column="1"
   data-row="1"
+  data-testid="cell-value"
 >
   Hello
 </span>

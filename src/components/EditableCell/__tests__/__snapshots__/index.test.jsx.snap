@@ -99,6 +99,10 @@ exports[`Editable Cell should create valid snapshot 1`] = `
   color: black;
 }
 
+.c4 {
+  display: block;
+}
+
 <div
   class="c0"
 >
@@ -131,9 +135,10 @@ exports[`Editable Cell should create valid snapshot 1`] = `
     type="button"
   >
     <span
-      class=""
+      class="c4"
       data-column="1"
       data-row="1"
+      data-testid="cell-value"
     >
       Hello
     </span>

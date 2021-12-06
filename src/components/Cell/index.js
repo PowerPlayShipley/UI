@@ -13,7 +13,7 @@ const Cell = ({ value: initialValue, row: { index }, column: { id }}) => {
     setValue(initialValue)
   }, [initialValue])
 
-  return <Wrapper data-row={index} data-column={id}>{value}</Wrapper>
+  return <Wrapper data-testid="cell-value" data-row={index} data-column={id}>{value}</Wrapper>
 }
 
 Cell.propTypes = {
