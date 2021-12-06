@@ -26,15 +26,6 @@ const GlobalStyle = createGlobalStyle`
     height: 100%;
   }
   
-  .leaflet-container {
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    z-index: 0;
-  }
-  
   img[data-src], img[data-srcset] {
     min-height: 1px;
     min-width: 1px;
