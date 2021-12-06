@@ -3,13 +3,14 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "dev": "next dev",
     "build": "next build",
-    "start": "next start",
     "lint": "next lint",
     "storybook": "start-storybook -p 6006",
     "storybook:build": "build-storybook",
-    "deploy:gh-pages": "gh-pages"
+    "predeploy": "npm run lint && npm run build",
+    "deploy:gh-pages": "gh-pages",
+    "deploy:dev": "next dev",
+    "deploy": "next start"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
