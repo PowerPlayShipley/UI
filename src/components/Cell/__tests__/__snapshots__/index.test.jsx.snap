@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Display Cell should create valid snapshot 1`] = `
+<span
+  class=""
+  data-column="1"
+  data-row="1"
+>
+  Hello
+</span>
+`;

@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header should have \`as\` set to \`h5\` 1`] = `
+<h5
+  class="h5"
+>
+  Hello World
+</h5>
+`;
