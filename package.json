@@ -7,6 +7,10 @@
     "lint": "next lint",
     "test": "jest",
     "test:ci": "jest --ci",
+    "test:cypress": "cypress open",
+    "test:cypress:headless": "cypress run",
+    "test:e2e": "start-server-and-test deploy:dev http://localhost:3000 test:cypress",
+    "test:e2e:headless": "start-server-and-test deploy:dev http://localhost:3000 test:cypress:headless",
     "storybook": "start-storybook -p 6006",
     "storybook:build": "build-storybook",
     "predeploy": "npm run lint && npm run build",
@@ -46,12 +50,14 @@
     "@testing-library/user-event": "13.5.0",
     "babel-jest": "^27.4.2",
     "babel-loader": "^8.2.3",
+    "cypress": "^8.2.0",
     "eslint": "7.32.0",
     "eslint-config-next": "12.0.4",
     "eslint-plugin-testing-library": "4.11.0",
     "gh-pages": "^3.2.3",
     "jest": "^27.4.3",
     "jest-styled-components": "^7.0.8",
-    "react-test-renderer": "17.0.2"
+    "react-test-renderer": "17.0.2",
+    "start-server-and-test": "^1.13.1"
   }
 }

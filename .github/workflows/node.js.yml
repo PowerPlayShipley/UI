@@ -34,3 +34,29 @@ jobs:
         run: npm ci
       - name: Run Jest
         run: npm run test:ci
+  cypress:
+    runs-on: ubuntu-latest
+    if: "!contains(github.event.commits[0].message, '[skip ci]')"
+
+    strategy:
+      matrix:
+        browser: [edge, chrome]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Use Node.js
+        uses: actions/setup-node@v2
+        with:
+          always-auth: true
+          node-version: '16'
+          registry-url: https://registry.npmjs.org
+      # Install NPM dependencies, cache them correctly
+      # and run all Cypress tests
+      - name: Start API's
+        run: docker-compose -f ./deploy/docker/docker-compose.yml up
+      - name: Cypress run
+        uses: cypress-io/github-action@v2
+        with:
+          browser: ${{ matrix.browser }}
+          command: test:e2e:headless
