@@ -28,3 +28,21 @@ Disabled.args = {
   value: ['A', 'B', 'C'],
   disabled: true
 }
+
+export const RightFloat = Template.bind({});
+RightFloat.args = {
+  row: 1,
+  column: 1,
+  value: ['A', 'B', 'C'],
+  disabled: false,
+  toolbarFloat: 'right'
+}
+
+export const RightFloatDisabled = Template.bind({});
+RightFloatDisabled.args = {
+  row: 1,
+  column: 1,
+  value: ['A', 'B', 'C'],
+  disabled: true,
+  toolbarFloat: 'right'
+}
