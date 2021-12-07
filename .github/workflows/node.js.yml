@@ -59,7 +59,7 @@ jobs:
         uses: cypress-io/github-action@v2
         with:
           browser: ${{ matrix.browser }}
-          command: test:e2e:headless
+          command: npm run test:e2e:headless
       - name: Post Start API's
         run: docker-compose -f ./deploy/docker/docker-compose.yml down
         continue-on-error: true
