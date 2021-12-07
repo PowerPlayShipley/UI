@@ -51,12 +51,10 @@ jobs:
           always-auth: true
           node-version: '16'
           registry-url: https://registry.npmjs.org
-      # Install NPM dependencies, cache them correctly
-      # and run all Cypress tests
       - name: Start API's
         run: |
-        docker network create traefik-public
-        docker-compose -f ./deploy/docker/docker-compose.yml up -d
+          docker network create traefik-public
+          docker-compose -f ./deploy/docker/docker-compose.yml up -d
       - name: Cypress run
         uses: cypress-io/github-action@v2
         with:
@@ -64,3 +62,4 @@ jobs:
           command: test:e2e:headless
       - name: Post Start API's
         run: docker-compose -f ./deploy/docker/docker-compose.yml down
+        continue-on-error: true
