@@ -18,6 +18,88 @@ exports[`Editable Cell should create valid snapshot 1`] = `
   padding: 0 0;
 }
 
+.c2 {
+  position: relative;
+  display: inline-block;
+  padding: 5px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  border: 1px solid;
+  border-radius: 6px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.c2:hover {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c2:disabled,
+.c2.disabled,
+.c2[aria-disabled=true] {
+  cursor: default;
+}
+
+.c2 .dropdown-caret {
+  margin-left: 4px;
+  opacity: 0.8;
+}
+
+.c2 {
+  color: #24292f;
+  background-color: #f6f8fa;
+  border: 1px rgba(208,215,222,0.5) solid;
+  box-shadow: 0 1px 0 rgba(27,31,36,0.04),inset 0 1px 0 rgba(255,255,255,0.25);
+  -webkit-transition: 0.2s cubic-bezier(0.3,0,0.5,1);
+  transition: 0.2s cubic-bezier(0.3,0,0.5,1);
+  -webkit-transition-property: color,background-color,border-color;
+  transition-property: color,background-color,border-color;
+}
+
+.c2:hover,
+.c2.hover,
+[open] > .c2 {
+  background-color: #eaeef2;
+  -webkit-transition-duration: 0.1s;
+  transition-duration: 0.1s;
+}
+
+.c2:active {
+  background-color: #e1e6ec;
+  -webkit-transition: none;
+  transition: none;
+}
+
+.c2.selected,
+.c2[aria-selected=true] {
+  background-color: #e4e9ee;
+  box-shadow: inset 0 1px 0 rgba(208,215,222,0.2);
+}
+
+.c2:disabled,
+.c2.disabled,
+.c2[aria-disabled=true] {
+  color: #8c959f;
+  background-color: #f6f8fa;
+  cursor: default;
+}
+
+.c2:focus,
+.c2.focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(9,105,218,0.15);
+}
+
 .c1 {
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -34,7 +116,7 @@ exports[`Editable Cell should create valid snapshot 1`] = `
   padding: 0 4px 0 4px;
 }
 
-.c2 {
+.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -63,44 +145,75 @@ exports[`Editable Cell should create valid snapshot 1`] = `
   text-transform: none;
 }
 
-.c2:hover {
+.c3:hover {
   background: #dee0e2;
   border: 0;
   box-shadow: none;
   color: #222f3e;
 }
 
-.c2:disabled {
-  cursor: not-allowed;
-  pointer-events: none;
-  color: #c0c0c0;
-  background-color: #ffffff;
+.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
 }
 
-.c3 {
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  margin-left: 0 !important;
-  padding-right: 4px;
+.c7 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  margin-bottom: 2px;
+  height: 24px;
+  width: 24px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
 }
 
-.c3:last-child {
-  padding-right: 0;
+.c6 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border-radius: 3px;
+  padding: 4px;
+  color: #222f3e;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
-.c3:disabled {
-  color: black;
+.c6:hover {
+  background-color: #dee0e2;
 }
 
-.c4 {
-  display: block;
+.c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  max-height: 200px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: 0;
 }
 
 <div
@@ -110,7 +223,7 @@ exports[`Editable Cell should create valid snapshot 1`] = `
     class="c1"
   >
     <button
-      class="c2"
+      class="c2 c3 default"
       type="button"
     >
       <svg
@@ -130,18 +243,23 @@ exports[`Editable Cell should create valid snapshot 1`] = `
       </svg>
     </button>
   </div>
-  <button
-    class="c3"
-    type="button"
+  <div
+    class="c4"
   >
-    <span
-      class="c4"
-      data-column="1"
-      data-row="1"
-      data-testid="cell-value"
+    <div
+      class="c5"
     >
-      Hello
-    </span>
-  </button>
+      <div
+        class="c6"
+        data-item="Hello"
+      >
+        <div
+          class="c7"
+        >
+          Hello
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 `;

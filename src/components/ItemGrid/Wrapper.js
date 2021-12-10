@@ -5,4 +5,6 @@ const Wrapper = styled.div`
   flex: 1;
 `
 
+Wrapper.displayName = 'Grid'
+
 export default Wrapper

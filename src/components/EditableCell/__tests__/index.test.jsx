@@ -36,9 +36,9 @@ describe('Editable Cell', () => {
   it('should handle item click', function () {
     const handleClick = jest.fn()
 
-    const { container } = renderWithTheme(<Cell column={{ id: 1 }} row={{ index: 1 }} value={['Hello']} onItemClick={handleClick} />)
+    const { getByText } = renderWithTheme(<Cell column={{ id: 1 }} row={{ index: 1 }} value={['Hello']} onItemClick={handleClick} />)
 
-    fireEvent.click(container.querySelector('span'))
+    fireEvent.click(getByText('Hello').parentNode)
     expect(handleClick).toHaveBeenCalledTimes(1)
   })
 

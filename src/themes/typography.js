@@ -36,12 +36,8 @@ const lineHeights = {
   normal: 'normal'
 }
 
-// TODO: Add a ground of font sizes??
-
 const bodyFont = '"Lato",  -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji"'
-// const fontSize = '14px'
 const fontSize = '16px'
-// const fontSmall = '12px'
 const fontSmall = '14px'
 const lineHeight = lineHeights.normal
 

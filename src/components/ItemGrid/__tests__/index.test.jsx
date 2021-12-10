@@ -3,7 +3,7 @@
  */
 
 import React from 'react'
-import { renderWithTheme } from '../../../../__mocks__/theme-test-utils'
+import { fireEvent, renderWithTheme, screen } from '../../../../__mocks__/theme-test-utils'
 
 import ItemGrid from "../index";
 
@@ -21,5 +21,14 @@ describe('Item Grid', () => {
       const child = getByText(item)
       expect(container).toContainElement(child)
     }
+  });
+
+  it('should fire an event', function () {
+    const handleClick = jest.fn()
+
+    const { getByText } = renderWithTheme(<ItemGrid items={['1']} onClick={handleClick} />)
+
+    fireEvent.click(getByText('1').parentElement)
+    expect(handleClick).toHaveBeenCalledTimes(1)
   });
 })

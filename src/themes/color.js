@@ -1,59 +1,67 @@
-import colorSystem from './color-system'
+import { hexToRGB } from './utils'
+import colorSystem from './color-system/light'
 
-// Border-colors
+/**
+ * Todo: Create this dynamically with a function that takes a colour system
+ *       as the param
+ * */
 
-const border = {
-  white: colorSystem.white,
-  'white-fade': colorSystem.fades['white-15'],
-  'black-fade': colorSystem.fades['black-15'],
-  gray: colorSystem.grays['200'],
-  'gray-dark': colorSystem.grays['300'],
-  'gray-darker': colorSystem.grays['700'],
-  'gray-light': `lighten(${colorSystem.grays['200']}, 3%)`,
-  red: colorSystem.red,
-  'red-light': colorSystem.reds['300'],
-  green: colorSystem.green,
-  'green-light': `lighten(${colorSystem.green}, 40%)`,
-  blue: colorSystem.blue,
-  'blue-light': colorSystem.reds['200']
+// defaults
+
+const defaults = {
+  black: colorSystem.grays['900'],
+  blackBright: colorSystem.grays['600'],
+  white: colorSystem.grays['500'],
+  whiteBright: colorSystem.grays['400'],
+  gray: colorSystem.grays['500'],
+  red: colorSystem.reds['500'],
+  redBright: colorSystem.reds['600'],
+  green: colorSystem.greens['600'],
+  greenBright: colorSystem.greens['500'],
+  yellow: colorSystem.yellows['800'],
+  yellowBright: colorSystem.yellows['700'],
+  blue: colorSystem.blues['500'],
+  blueBright: colorSystem.blues['400'],
+  cyan: '#1b7c83',
+  cyanBright: '#3192aa'
 }
 
 // Backgrounds
 
 const backgrounds = {
-  white: colorSystem.white,
-  black: colorSystem.black,
-  'black-fade': colorSystem.fades['black-50'],
-  gray: colorSystem.grays['100'],
-  'gray-light': colorSystem.grays['000'],
-  'gray-dark': colorSystem.grays['900'],
-  blue: colorSystem.blue,
-  'blue-light': colorSystem.blues['000'],
-  green: colorSystem.green,
-  'green-light': colorSystem.greens['100'],
-  red: colorSystem.red,
-  'red-light': colorSystem.reds['000']
+  default: colorSystem.grays['000'],
+  primary: colorSystem.blues['500'],
+  success: colorSystem.greens['400'],
+  danger: colorSystem.reds['600']
+}
+
+// Border-colors
+
+const border = {
+  default: colorSystem.grays['200'],
+  muted: `lighten(${colorSystem.grays['200']}, 3%)`,
+  subtle: `rgba(${hexToRGB(colorSystem.grays['200'])}, 0.5)`
 }
 
 // Text
 
 const text = {
-  black: colorSystem.black,
-  white: colorSystem.white,
-  gray: colorSystem.gray,
-  'gray-light': colorSystem['gray-light'],
-  'gray-dark': colorSystem['gray-dark'],
-  blue: colorSystem.blue,
-  green: colorSystem.green,
-  red: colorSystem.red
+  default: defaults.black,
+  muted: defaults.blackBright,
+  subtle: defaults.white,
+  disabled: defaults.whiteBright,
+  white: colorSystem.white
 }
+
 
 // Export
 
 const colors = {
   backgrounds,
+  defaults,
   border,
-  text
+  text,
+  system: colorSystem
 }
 
 export default colors

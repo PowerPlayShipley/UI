@@ -1,4 +1,5 @@
 import { createGlobalStyle, css } from 'styled-components'
+import { normalize } from 'styled-normalize'
 import typography from '../../themes/typography'
 
 // Helper methods to clean up the header css
@@ -8,6 +9,8 @@ const cssNames = (header) => elements.includes(header) ? `${header}, .${header}`
 const hasMobileVersion = (header) => mobileHeaders.includes(`${header}-mobile`)
 
 const GlobalStyle = createGlobalStyle`
+  ${normalize}
+  
   * {
     box-sizing: border-box;
   }

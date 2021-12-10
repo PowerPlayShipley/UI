@@ -2,7 +2,11 @@ import React, { useCallback } from 'react'
 import PropTypes from 'prop-types'
 
 import Wrapper from "./Wrapper";
-import { Icon, Item, Grid } from './components'
+import { Icon, Item, Group } from './components'
+
+const get = (element) => (typeof element === 'object' && element.value) ? element.value : element
+// TODO: Move this to it's own util method so it can read all items from the object and covert them to the correct attribute
+const tooltip = (element) => (typeof element === 'object' && element.tooltip) ? { 'data-tip': element.tooltip } : { }
 
 const ItemGrid = ({ items, onClick }) => {
   const handleClick = useCallback((e, item, idx) => {
@@ -12,19 +16,27 @@ const ItemGrid = ({ items, onClick }) => {
 
   return (
     <Wrapper>
-      <Grid>
+      <Group>
         {items.map((item, idx) => (
-          <Item data-item={item} key={idx} onClick={(e) => handleClick(e, item, idx)}>
-            <Icon>{item}</Icon>
+          <Item data-item={get(item)} {...tooltip(item)} key={idx} onClick={(e) => handleClick(e, item, idx)}>
+            <Icon>{get(item)}</Icon>
           </Item>
         ))}
-      </Grid>
+      </Group>
     </Wrapper>
   )
 }
 
 ItemGrid.propTypes = {
-  items: PropTypes.array.isRequired,
+  items: PropTypes.arrayOf(
+    PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.shape({
+        value: PropTypes.string.isRequired,
+        tooltip: PropTypes.string
+      })
+    ])
+  ).isRequired,
   onClick: PropTypes.func
 }
 

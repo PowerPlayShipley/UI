@@ -16,6 +16,27 @@ Default.args = {
   items: [ "😴", "😄", "😃", "⛔", "🎠", "🚓", "🚇"]
 }
 
+export const Tooltip = Template.bind({})
+Tooltip.args = {
+  length: 50,
+  items: [{
+    value: "😀",
+    tooltip: 'Grinning face'
+  }, {
+    value: '🥰',
+    tooltip: 'Smiling face with hearts'
+  }, {
+    value: '👁',
+    tooltip: 'Eye'
+  }, {
+    value: '🌗',
+    tooltip: 'Last quarter moon'
+  }, {
+    value: '🌎',
+    tooltip: 'Globe showing Americas'
+  }]
+}
+
 function getRandomInt(max) {
   return Math.floor(Math.random() * max);
 }

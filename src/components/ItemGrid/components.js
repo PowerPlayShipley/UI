@@ -9,6 +9,7 @@ export const Icon = styled.div`
   
   justify-content: center;
 `
+Icon.displayName = 'Icon'
 
 export const Item = styled.div`
   display: flex;
@@ -26,8 +27,9 @@ export const Item = styled.div`
     background-color: #dee0e2;
   }
 `
+Item.displayName = 'Item'
 
-export const Grid = styled.div`
+export const Group = styled.div`
   display: flex;
   flex-wrap: wrap;
   
@@ -38,3 +40,4 @@ export const Grid = styled.div`
   
   padding: 0;
 `
+Group.displayName = 'Group'

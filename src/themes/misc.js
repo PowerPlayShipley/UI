@@ -1,10 +1,12 @@
 import colors from './color'
-import colorSystem from './color-system'
+import colorSystem from './color-system/light'
 import { hexToRGB } from './utils'
 
 // Border
-const border = `1px ${colors.border.gray} solid`
-const borderWithColor = (color) => `1px ${color} solid`
+const borderWidth = '1px'
+const borderStyle = 'solid'
+const borderWithColor = (color) => `${borderWidth} ${color} ${borderStyle}`
+const border = borderWithColor(colors.border.subtle)
 
 // Border Radius
 const radius = {
@@ -21,10 +23,11 @@ const shadow = {
   medium: `0 3px 6px rgba(${hexToRGB(colorSystem.grays['400'])}, 0.15)`,
   large: `0 8px 24px rgba(${hexToRGB(colorSystem.grays['400'])}, 0.2)`,
   'extra-large': `0 12px 48px rgba(${hexToRGB(colorSystem.grays['400'])}, 0.3)`,
+}
 
-  highlight: `inset 0 1px 0 rgba(${hexToRGB(colorSystem.white)}, 0.25)`,
-  inset: `inset 0 1px 0 rgba(${hexToRGB(colors.border.gray)}, 0.2)`,
-  focus: `0 0 0 3px rgba(${hexToRGB(colors.border.blue)}, 0.3)`
+const inset = {
+  default: `inset 0 1px 0 rgba(${hexToRGB(colorSystem.white)}, 0.25)`,
+  medium: `inset 0 1px 0 rgba(${hexToRGB(colorSystem.grays['200'])}, 0.2)`
 }
 
 // Tooltip
@@ -43,8 +46,11 @@ const tooltip = {
 const misc = {
   border,
   borderWithColor,
+  borderWidth,
+  borderStyle,
   radius,
   shadow,
+  inset,
   tooltip
 }
 

@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+import Button from "../Button";
+
 export const Toolbar = styled.div`
   align-items: center;
   display: flex;
@@ -8,7 +10,7 @@ export const Toolbar = styled.div`
   padding: 0 4px 0 4px;
 `
 
-export const ToolbarButton = styled.button`
+export const ToolbarButton = styled(Button)`
   display: flex;
   flex: 0 0 auto;
   align-items: center;
@@ -35,15 +37,6 @@ export const ToolbarButton = styled.button`
     border: 0;
     box-shadow: none;
     color: #222f3e;
-  }
-
-  &:disabled {
-    cursor: not-allowed;
-    pointer-events: none;
-
-    /*Button disabled - CSS color class*/
-    color: #c0c0c0;
-    background-color: #ffffff;
   }
 `
 

@@ -9,8 +9,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDonate } from "@fortawesome/free-solid-svg-icons"
 
 import Wrapper from "./Wrapper";
-import { Toolbar, ToolbarButton, ItemButton }  from './components'
-import Cell from "../Cell";
+import { Toolbar, ToolbarButton }  from './components'
+
+import ItemGrid from "../ItemGrid";
 
 const EditableCell = ({ value, row, column, onToolbarClick, onItemClick, toolbarFloat = 'left', disabled = false, ...rest}) => {
   // Pass the Toolbar button press back up the chain
@@ -20,24 +21,20 @@ const EditableCell = ({ value, row, column, onToolbarClick, onItemClick, toolbar
   }, [onToolbarClick, value, row, column])
 
   // Pass the item press back up the chain
-  const handleItemClick = useCallback((index) => {
+  const handleItemClick = useCallback((_, index) => {
     onItemClick && onItemClick(index, value, row, column)
   }, [onItemClick, value, row, column])
 
   return (
     <Wrapper {...rest}>
       {toolbarFloat === 'left' && (
-        <Toolbar>
+        <Toolbar toolbarFloat={toolbarFloat}>
           <ToolbarButton disabled={disabled} type="button" onClick={handleToolbarClick}>
             <FontAwesomeIcon icon={faDonate} />
           </ToolbarButton>
         </Toolbar>
       )}
-      {value.map((value, idx) => (
-        <ItemButton disabled={disabled} key={`${row.index}.${column.id}.${idx}`} type="button" onClick={(e) => { e.preventDefault(); handleItemClick(idx) }}>
-          <Cell value={value} column={column} row={row} />
-        </ItemButton>
-      ))}
+      <ItemGrid items={value} onClick={handleItemClick} />
       {toolbarFloat === 'right' && (
         <Toolbar toolbarFloat={toolbarFloat}>
           <ToolbarButton disabled={disabled} type="button" onClick={handleToolbarClick}>
