@@ -23,6 +23,13 @@ describe('Item Grid', () => {
     }
   });
 
+  it('should set the tooltip value', function () {
+    const items = [{ value: '55', tooltip: 'Fifty Five' }]
+
+    const { getByText } = renderWithTheme(<ItemGrid items={items} />)
+    expect(getByText('55').parentElement).toHaveAttribute('data-tip', 'Fifty Five')
+  });
+
   it('should fire an event', function () {
     const handleClick = jest.fn()
 

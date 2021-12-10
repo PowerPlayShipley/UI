@@ -4,9 +4,10 @@ import PropTypes from 'prop-types'
 import Wrapper from "./Wrapper";
 import { Icon, Item, Group } from './components'
 
+import tooltip from "../../utils/tooltip";
+
+// Get the element if an object is passed not a value
 const get = (element) => (typeof element === 'object' && element.value) ? element.value : element
-// TODO: Move this to it's own util method so it can read all items from the object and covert them to the correct attribute
-const tooltip = (element) => (typeof element === 'object' && element.tooltip) ? { 'data-tip': element.tooltip } : { }
 
 const ItemGrid = ({ items, onClick }) => {
   const handleClick = useCallback((e, item, idx) => {
