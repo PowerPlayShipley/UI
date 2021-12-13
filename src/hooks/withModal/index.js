@@ -8,7 +8,6 @@ import useModal from "../useModal";
 import Wrapper from "./Wrapper";
 import Backdrop from "./Backdrop";
 
-
 function withModal(Modal) {
   const Portal = ({ className, defaultOpen = false, backdrop = true, style = { }, ...rest }, ref) => {
     // Have an idea for this where each call can increment it but keep the initial value somewhere ??

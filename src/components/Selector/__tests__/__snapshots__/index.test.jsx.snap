@@ -114,6 +114,14 @@ exports[`Display Button should create valid snapshot 1`] = `
   flex: 1;
 }
 
+.c5 div[disabled],
+.c5 div.disabled,
+.c5 div[aria-disabled=true] {
+  pointer-events: none;
+  color: #8c959f;
+  opacity: 65%;
+}
+
 .c6 {
   display: -webkit-box;
   display: -webkit-flex;

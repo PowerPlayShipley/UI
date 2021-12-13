@@ -5,7 +5,7 @@ export const Icon = styled.div`
   align-items: center;
   
   height: 24px;
-  width: 24px;
+  min-width: 24px;
   
   justify-content: center;
 `
