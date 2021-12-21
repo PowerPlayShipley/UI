@@ -28,7 +28,7 @@ for (let i = 1; i < 12; i++) {
 const spacer = 8
 
 // eslint-disable-next-line no-var, no-redeclare
-var inc = (i) => (i === 0
+var inc_space = (i) => (i === 0
   ? '0'
   : i === 1
     ? `${Math.round(spacer / 2)}px`
@@ -39,7 +39,7 @@ var inc = (i) => (i === 0
 const spacing = {}
 
 for (let i = 0; i < 7; i++) {
-  spacing[`space-${i}`] = inc(i)
+  spacing[`space-${i}`] = inc_space(i)
 }
 
 /**
@@ -48,17 +48,16 @@ for (let i = 0; i < 7; i++) {
 const size = 16
 
 // eslint-disable-next-line no-var, no-redeclare
-var inc = (i) => (i === 8 ? 16 : i > 5 ? 8 : 4)
+const inc_size = (i) => (i === 7 ? 16 : i >= 5 ? 8 : 4)
 
 const scale = {
   'size-0': 0,
-  'size-1': `${size}px`
 }
 
 let prev = size
-for (let i = 2; i <= 8; i++) {
-  scale[`size-${i}`] = `${inc(i)}px`
-  prev = prev + inc(i)
+for (let i = 1; i <= 8; i++) {
+  scale[`size-${i}`] = `${prev}px`
+  prev = prev + inc_size(i)
 }
 
 /**
