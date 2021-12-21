@@ -38,7 +38,10 @@ ItemGrid.propTypes = {
     PropTypes.oneOfType([
       PropTypes.string,
       PropTypes.shape({
-        value: PropTypes.string.isRequired,
+        value: PropTypes.oneOfType([
+          PropTypes.string,
+          PropTypes.element
+        ]).isRequired,
         tooltip: PropTypes.string
       })
     ])

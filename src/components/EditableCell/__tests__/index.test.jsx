@@ -3,7 +3,7 @@
  */
 
 import React from 'react'
-import { renderWithTheme, fireEvent } from '../../../../__mocks__/theme-test-utils'
+import { renderWithTheme, fireEvent, screen } from '../../../../__mocks__/theme-test-utils'
 
 import Cell from "../index";
 
@@ -17,11 +17,11 @@ describe('Editable Cell', () => {
   });
 
   it('should render disabled button', function () {
-    const { container } = renderWithTheme(<Cell column={{ id: 1 }} row={{ index: 1 }} value={['Hello']} disabled={true} />)
+    const { container, getByText } = renderWithTheme(<Cell column={{ id: 1 }} row={{ index: 1 }} value={['Hello']} disabled={true} />)
     expect(container).toHaveTextContent('Hello')
 
-    const button = container.querySelector('button')
-    expect(button).toBeDisabled()
+    const button = getByText('Hello').parentNode
+    expect(button).toHaveAttribute('aria-disabled', 'false')
   });
 
   it('should handle toolbar click', function () {
