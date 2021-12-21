@@ -15,9 +15,8 @@ import ItemGrid from "../ItemGrid";
 
 const EditableCell = ({ value, row, column, onToolbarClick, onItemClick, toolbarFloat = 'left', disabled = false, ...rest}) => {
   // Pass the Toolbar button press back up the chain
-  const handleToolbarClick = useCallback((e) => {
-    e.preventDefault()
-    onToolbarClick && onToolbarClick(e, value, row, column)
+  const handleToolbarClick = useCallback((_, index) => {
+    onToolbarClick && onToolbarClick(index, value, row, column)
   }, [onToolbarClick, value, row, column])
 
   // Pass the item press back up the chain
@@ -25,23 +24,17 @@ const EditableCell = ({ value, row, column, onToolbarClick, onItemClick, toolbar
     onItemClick && onItemClick(index, value, row, column)
   }, [onItemClick, value, row, column])
 
+  const renderToolbarButton = (float) => {
+    return (float === toolbarFloat) && (
+      <ItemGrid items={[{ value: <FontAwesomeIcon icon={faDonate} />, name: 'FontAwesomeIcon' }]} onClick={handleToolbarClick} />
+    )
+  }
+
   return (
-    <Wrapper {...rest}>
-      {toolbarFloat === 'left' && (
-        <Toolbar toolbarFloat={toolbarFloat}>
-          <ToolbarButton disabled={disabled} type="button" onClick={handleToolbarClick}>
-            <FontAwesomeIcon icon={faDonate} />
-          </ToolbarButton>
-        </Toolbar>
-      )}
+    <Wrapper {...rest} toolbarFloat={toolbarFloat}>
+      {renderToolbarButton('left')}
       <ItemGrid items={value} onClick={handleItemClick} />
-      {toolbarFloat === 'right' && (
-        <Toolbar toolbarFloat={toolbarFloat}>
-          <ToolbarButton disabled={disabled} type="button" onClick={handleToolbarClick}>
-            <FontAwesomeIcon icon={faDonate} />
-          </ToolbarButton>
-        </Toolbar>
-      )}
+      {renderToolbarButton('right')}
     </Wrapper>
   )
 }
