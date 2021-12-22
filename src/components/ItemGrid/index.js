@@ -1,5 +1,6 @@
 import React, { useCallback } from 'react'
 import PropTypes from 'prop-types'
+import clsx from "clsx";
 
 import Wrapper from "./Wrapper";
 import { Icon, Item, Group } from './components'
@@ -14,14 +15,14 @@ const disabled = (element, global) => global === true
   ? true : (typeof element === 'object' && element.disabled)
     ? element.disabled : false
 
-const ItemGrid = ({ items, disabled: isDisabled = false, onClick }) => {
+const ItemGrid = ({ className, items, disabled: isDisabled = false, onClick }) => {
   const handleClick = useCallback((e, item, idx) => {
     e.preventDefault()
     onClick && onClick(item, idx)
   }, [onClick])
 
   return (
-    <Wrapper>
+    <Wrapper className={clsx(className)}>
       <Group>
         {items.map((item, idx) => (
           <Item data-item={name(get(item))} {...tooltip(item)} key={idx} aria-disabled={disabled(item, isDisabled)} onClick={(e) => handleClick(e, item, idx)}>
@@ -34,6 +35,7 @@ const ItemGrid = ({ items, disabled: isDisabled = false, onClick }) => {
 }
 
 ItemGrid.propTypes = {
+  className: PropTypes.string,
   items: PropTypes.arrayOf(
     PropTypes.oneOfType([
       PropTypes.string,

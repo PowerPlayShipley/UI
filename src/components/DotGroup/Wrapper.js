@@ -6,7 +6,8 @@ const Wrapper = styled.span`
   align-items: center;
   
   span {
-    margin-right: 4px;
+    // Keep this nice and small
+    margin-right: ${({ size }) => size === 'xs' ? 2 : 4 }px;
   }
 
   span:last-child {

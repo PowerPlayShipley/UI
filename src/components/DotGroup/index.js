@@ -15,7 +15,7 @@ function DotGroup ({ className, tooltip: tt, dots, size = 'md', ...rest }) {
   }, [dots, size])
 
   return (
-    <Wrapper className={clsx(className)} {...tooltip(tt)} {...rest}>{
+    <Wrapper size={size} className={clsx(className)} {...tooltip(tt)} {...rest}>{
       dotObject.map((el, idx) => (
         <Dot key={idx} data-testid='dotitem' {...el} />
       ))}
@@ -30,7 +30,7 @@ DotGroup.propTypes = {
     PropTypes.oneOfType([
       PropTypes.exact({
         size: PropTypes.oneOf([
-          'sm', 'md', 'lg'
+          'xs', 'sm', 'md', 'lg'
         ]),
         color: PropTypes.string
       }),
@@ -39,7 +39,7 @@ DotGroup.propTypes = {
   ).isRequired,
   // Allow for a generalised size when passing colors as the dots proptype
   size: PropTypes.oneOf([
-    'sm', 'md', 'lg'
+    'xs', 'sm', 'md', 'lg'
   ])
 }
 

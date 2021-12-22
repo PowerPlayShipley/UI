@@ -9,7 +9,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDonate } from "@fortawesome/free-solid-svg-icons"
 
 import Wrapper from "./Wrapper";
-import { Toolbar, ToolbarButton }  from './components'
 
 import ItemGrid from "../ItemGrid";
 
@@ -26,7 +25,7 @@ const EditableCell = ({ value, row, column, onToolbarClick, onItemClick, toolbar
 
   const renderToolbarButton = (float) => {
     return (float === toolbarFloat) && (
-      <ItemGrid items={[{ value: <FontAwesomeIcon icon={faDonate} />, name: 'FontAwesomeIcon' }]} onClick={handleToolbarClick} />
+      <ItemGrid className='toolbar' items={[{ value: <FontAwesomeIcon icon={faDonate} />, name: 'FontAwesomeIcon' }]} onClick={handleToolbarClick} />
     )
   }
 

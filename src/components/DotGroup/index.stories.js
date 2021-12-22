@@ -15,3 +15,12 @@ Default.args = {
     tooltip: 'Includes Tooltip'
   }
 }
+
+export const Latency = Template.bind({});
+Latency.args = {
+  dots: ['green', 'green', 'green', 'grey'],
+  size: 'lg',
+  tooltip: {
+    tooltip: '30ms'
+  }
+}
