@@ -8,7 +8,7 @@ import { renderWithTheme, fireEvent } from '../../../../__mocks__/theme-test-uti
 import Button from "../index";
 
 describe('Display Button', () => {
-  it('should render cell', () => {
+  it('should render button', () => {
     const { container } = renderWithTheme(<Button title={'Hello'} />)
     expect(container).toHaveTextContent('Hello')
   })
