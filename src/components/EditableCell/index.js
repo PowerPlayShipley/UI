@@ -1,5 +1,8 @@
 /**
- * This is the cell to add and remove elements from the table
+ * This is the cell to add and remove elements from the table. Essentially a wrapper around
+ * <ItemGrid /> to help keep the items in place etc. So any changes in ItemGrid will affect here.
+ *
+ * @note Tests should show that
  * */
 
 import React, { useCallback } from 'react'
@@ -24,16 +27,25 @@ const EditableCell = ({ value, row, column, onToolbarClick, onItemClick, toolbar
   }, [onItemClick, value, row, column])
 
   const renderToolbarButton = (float) => {
-    return (float === toolbarFloat) && (
-      <ItemGrid className='toolbar' items={[{ value: <FontAwesomeIcon icon={faDonate} />, name: 'FontAwesomeIcon' }]} onClick={handleToolbarClick} />
-    )
+    return (float === toolbarFloat) && ({
+      name: 'toolbar',
+      className: 'toolbar',
+      value: <FontAwesomeIcon icon={faDonate} />
+    })
   }
 
   return (
     <Wrapper {...rest} toolbarFloat={toolbarFloat}>
-      {renderToolbarButton('left')}
-      <ItemGrid items={value} onClick={handleItemClick} />
-      {renderToolbarButton('right')}
+      <ItemGrid className='editable' items={value} onClick={handleItemClick} disabled={disabled}>
+        {({ items, createItem }) => (
+            <>
+              {createItem(renderToolbarButton('left'), 'toolbar', handleToolbarClick)}
+              {items()}
+              {createItem(renderToolbarButton('right'), 'toolbar', handleToolbarClick)}
+            </>
+          )
+        }
+      </ItemGrid>
     </Wrapper>
   )
 }

@@ -3,7 +3,7 @@
  */
 
 import React from 'react'
-import { renderWithTheme, fireEvent, screen } from '../../../../__mocks__/theme-test-utils'
+import { renderWithTheme, fireEvent } from '../../../../__mocks__/theme-test-utils'
 
 import Cell from "../index";
 
@@ -21,7 +21,7 @@ describe('Editable Cell', () => {
     expect(container).toHaveTextContent('Hello')
 
     const button = getByText('Hello').parentNode
-    expect(button).toHaveAttribute('aria-disabled', 'false')
+    expect(button).toHaveAttribute('aria-disabled', 'true')
   });
 
   it('should handle toolbar click', function () {

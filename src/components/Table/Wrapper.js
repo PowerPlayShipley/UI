@@ -12,6 +12,18 @@ const Wrapper = styled.table`
     }
   }
   
+  td {
+    vertical-align: top;
+    
+    .toolbar {
+      display: none;
+    }
+  }
+  
+  td:hover .toolbar {
+    display: flex;
+  }
+  
   th, td {
     margin: 0;
     padding: 0.5rem;
