@@ -5,6 +5,10 @@ import { hexToRGB } from "../../../themes/utils";
 const danger = css`
   &.danger {
     color: ${({ theme }) => theme.main.colors.text.red};
+    
+    .btn-icon {
+      color: ${({ theme }) => theme.main.colors.text.red};
+    }
   
     &:hover, &.hover, [open] > & {
       color: ${({ theme }) => theme.main.colors.system.white};
@@ -12,6 +16,10 @@ const danger = css`
       border-color: ${({ theme }) => theme.main.colors.border.subtle};
       box-shadow: 0 1px 0 rgba(${({ theme }) => hexToRGB(theme.main.colors.system.black)}, 0.1),
         inset 0 1px 0 rgba(${({ theme }) => hexToRGB(theme.main.colors.system.white)}, 0.03);
+
+      .btn-icon {
+        color: ${({ theme }) => theme.main.colors.system.white};
+      }
     }
   
     &:active, &.selected, &[aria-selected=true] {
@@ -26,6 +34,10 @@ const danger = css`
       background-color: ${({ theme }) => theme.main.colors.system.grays['000']};
       border-color: ${({ theme }) => theme.main.colors.border.subtle};
       box-shadow: none;
+
+      .btn-icon {
+        color: ${({ theme }) => theme.main.colors.text.disabled };
+      }
     }
   
     &:focus, &.focus {

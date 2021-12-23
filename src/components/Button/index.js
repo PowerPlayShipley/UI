@@ -1,17 +1,18 @@
 /**
- * Todo: Look into building better theming here
+ * Simple buttons, styled similar to github's primer css.
  * */
 
-import React from 'react'
+import React, { cloneElement } from 'react'
 import PropTypes from 'prop-types'
 
 import clsx from "clsx";
 
 import Wrapper from "./Wrapper";
 
-const Button = ({ as, disabled, state, title, className, children, ...rest }) => {
+const Button = ({ as, disabled, state, title, className, children, icon, ...rest }) => {
   return (
-    <Wrapper className={clsx(className && className, state && state)} as={as} disabled={disabled} state={state} {...rest}>
+    <Wrapper className={clsx(className, state && state)} as={as} disabled={disabled} state={state} {...rest}>
+      {(icon && !children) && cloneElement(icon, { className: 'btn-icon' })}
       {title && title || children}
     </Wrapper>
   )
@@ -30,7 +31,8 @@ Button.propTypes = {
   disabled: PropTypes.bool,
   state: PropTypes.oneOf(['default', 'primary', 'outline', 'danger']),
   title: PropTypes.string,
-  onClick: PropTypes.func
+  onClick: PropTypes.func,
+  icon: PropTypes.element
 }
 
 export default Button

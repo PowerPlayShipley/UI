@@ -12,7 +12,7 @@ const Wrapper = styled.button`
   padding: 5px ${({ theme }) => theme.main.sizes.spacing['space-3']};
   
   font-size: ${({ theme }) => theme.main.typography["font-size-small"]};
-  font-weight: ${({ theme }) => theme.main.typography.fontWeights.semiBold};
+  font-weight: ${({ theme }) => theme.main.typography.fontWeights.bold};
   line-height: 20px;
   
   white-space: nowrap;
@@ -36,6 +36,16 @@ const Wrapper = styled.button`
   .dropdown-caret {
     margin-left: ${({ theme }) => theme.main.sizes.spacing['space-1']};
     opacity: 0.8;
+  }
+  
+  & .btn-icon {
+    margin-right: ${({theme}) => theme.main.sizes.spacing['space-1']};
+    color: inherit;
+    vertical-align: text-bottom;
+
+    &:only-child {
+      margin-right: 0;
+    }
   }
   
   // Default button tags
@@ -68,6 +78,10 @@ const Wrapper = styled.button`
       color: ${({ theme }) => theme.main.colors.text.disabled };
       background-color: ${({ theme }) => theme.main.colors.backgrounds.default };
       cursor: default;
+
+      .btn-icon {
+        color: ${({ theme }) => theme.main.colors.text.disabled };
+      }
     }
 
     // Keep :focus after :disabled. Allows to see the focus ring even on disabled buttons

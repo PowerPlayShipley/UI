@@ -1,5 +1,8 @@
 /**
- * Wrapper for `use-table` of `react-table`
+ * Wrapper for `use-table` of `react-table`.
+ *
+ * The table will remain very basic, only being a simple wrapper, any styling should be done via the
+ * containers
  * */
 
 import React, { useEffect } from 'react'

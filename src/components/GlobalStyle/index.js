@@ -87,6 +87,14 @@ const GlobalStyle = createGlobalStyle`
   : null}
     }
   `)}
+
+  .btn-icon {
+    display: inline-block;
+    overflow: visible !important;
+    vertical-align: text-bottom;
+    fill: currentColor;
+  }
+
 `
 
 export default GlobalStyle

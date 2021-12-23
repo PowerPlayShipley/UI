@@ -10,21 +10,6 @@ exports[`Display Table should create valid snapshot 1`] = `
   border-bottom: 0;
 }
 
-.c0 td {
-  vertical-align: top;
-}
-
-.c0 td .toolbar {
-  display: none;
-}
-
-.c0 td:hover .toolbar {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
 .c0 th,
 .c0 td {
   margin: 0;

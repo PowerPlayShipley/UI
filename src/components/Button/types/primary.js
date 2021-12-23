@@ -24,12 +24,20 @@ const primary = css`
       color: rgba(${({ theme }) => hexToRGB(theme.main.colors.system.white)}, 0.8);
       background-color: #94d3a2;
       border-color: ${({ theme }) => theme.main.colors.border.subtle};
+
+      .btn-icon {
+        color: ${({ theme }) => theme.main.colors.text.disabled };
+      }
     }
   
     &:focus, &.focus {
       background-color: ${({ theme }) => theme.main.colors.system.greens['400']};
       border-color: ${({ theme }) => theme.main.colors.border.subtle};
       box-shadow: 0 0 0 3px rgba(${({ theme }) => hexToRGB(theme.main.colors.system.greens['400'])}, 0.4);
+    }
+
+    .btn-icon {
+      color: ${({ theme }) => theme.main.colors.system.white};
     }
   }
 `

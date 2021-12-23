@@ -13,6 +13,10 @@ const outline = css`
       
       box-shadow: 0 1px 0 rgba(${({ theme }) => hexToRGB(theme.main.colors.system.black)}, 0.1),
         inset 0 1px 0 rgba(${({ theme }) => hexToRGB(theme.main.colors.system.white)}, 0.03);
+      
+      .btn-icon {
+        color: inherit;
+      }
     }
   
     &:active, &.selected, &[aria-selected=true] {
