@@ -13,7 +13,7 @@ describe('Editable Cell', () => {
     expect(container).toHaveTextContent('Hello')
 
     const svg = container.querySelector('svg')
-    expect(svg).toHaveClass('fa-donate')
+    expect(svg).toHaveClass('fa-plus')
   });
 
   it('should render disabled button', function () {

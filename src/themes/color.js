@@ -1,5 +1,6 @@
 import { hexToRGB } from './utils'
 import colorSystem from './color-system/light'
+import {lighten} from "polished";
 
 /**
  * Todo: Create this dynamically with a function that takes a colour system
@@ -37,9 +38,11 @@ const backgrounds = {
 
 // Border-colors
 
+
+
 const border = {
   default: colorSystem.grays['200'],
-  muted: `lighten(${colorSystem.grays['200']}, 3%)`,
+  muted: lighten('3%', colorSystem.grays['200']),
   subtle: `rgba(${hexToRGB(colorSystem.grays['200'])}, 0.5)`
 }
 

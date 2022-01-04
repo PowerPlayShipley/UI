@@ -9,7 +9,7 @@ import React, { useCallback } from 'react'
 import PropTypes from 'prop-types'
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faDonate } from "@fortawesome/free-solid-svg-icons"
+import { faPlus } from "@fortawesome/free-solid-svg-icons"
 
 import Wrapper from "./Wrapper";
 
@@ -30,7 +30,7 @@ const EditableCell = ({ value, row, column, onToolbarClick, onItemClick, toolbar
     return (float === toolbarFloat) && ({
       name: 'toolbar',
       className: 'toolbar',
-      value: <FontAwesomeIcon icon={faDonate} />
+      value: <FontAwesomeIcon icon={faPlus} />
     })
   }
 
@@ -57,7 +57,9 @@ EditableCell.propTypes = {
     index: PropTypes.number
   }).isRequired,
   column: PropTypes.shape({
-    id: PropTypes.number
+    id: PropTypes.oneOfType([
+      PropTypes.string, PropTypes.number
+    ])
   }).isRequired,
   onToolbarClick: PropTypes.func,
   onItemClick: PropTypes.func,
