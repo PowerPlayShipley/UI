@@ -8,13 +8,13 @@ const Wrapper = styled.div`
   
   & table {
     width: 100%;
+    height: auto;
     border: none;
 
     border-collapse: separate;
     border-spacing: 0 8px;
     
     th, td {
-      line-height: ${({ theme }) => theme.main.sizes.scale['size-6']};
       width: 1%;
     }
 

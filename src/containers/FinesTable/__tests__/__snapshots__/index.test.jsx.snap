@@ -9,6 +9,7 @@ exports[`Display FinesTable should create a valid snapshot 1`] = `
 
 .c0 table {
   width: 100%;
+  height: auto;
   border: none;
   border-collapse: separate;
   border-spacing: 0 8px;
@@ -16,7 +17,6 @@ exports[`Display FinesTable should create a valid snapshot 1`] = `
 
 .c0 table th,
 .c0 table td {
-  line-height: 40px;
   width: 1%;
 }
 
