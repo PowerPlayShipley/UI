@@ -3,14 +3,28 @@
 exports[`Display FinesTable should create a valid snapshot 1`] = `
 .c0 {
   display: block;
-  max-width: 100%;
-  overflow: scroll visible;
+  width: 100%;
+  overflow-x: auto;
 }
 
 .c0 table {
   width: 100%;
-  height: auto;
+  max-width: 100%;
+}
+
+.c0 table .editable div {
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+}
+
+.c0 table .editable svg {
+  color: #6e7781;
+}
+
+.c0 table {
   border: none;
+  height: auto;
   border-collapse: separate;
   border-spacing: 0 8px;
 }
@@ -18,6 +32,7 @@ exports[`Display FinesTable should create a valid snapshot 1`] = `
 .c0 table th,
 .c0 table td {
   width: 1%;
+  vertical-align: middle !important;
 }
 
 .c0 table th {
@@ -59,18 +74,6 @@ exports[`Display FinesTable should create a valid snapshot 1`] = `
 .c0 table tbody tr td:last-child {
   border-top-right-radius: var(--border-radius-cell);
   border-bottom-right-radius: var(--border-radius-cell);
-}
-
-.c0 table tbody td .toolbar {
-  visibility: hidden;
-  opacity: 0;
-  -webkit-transition: visibility 0s,opacity 0.1s linear;
-  transition: visibility 0s,opacity 0.1s linear;
-}
-
-.c0 table tbody td:hover .toolbar {
-  visibility: visible;
-  opacity: 1;
 }
 
 .c1 {
@@ -199,11 +202,25 @@ exports[`Display FinesTable should create a valid snapshot 1`] = `
   padding: 0;
 }
 
+@media (min-width:767px) {
+  .c0 table tbody td .toolbar {
+    visibility: hidden;
+    opacity: 0;
+    -webkit-transition: visibility 0s,opacity 0.1s linear;
+    transition: visibility 0s,opacity 0.1s linear;
+  }
+
+  .c0 table tbody td:hover .toolbar {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
 <div
   class="c0"
 >
   <table
-    class="c1"
+    class="c1 table"
     role="table"
   >
     <thead>

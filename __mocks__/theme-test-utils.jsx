@@ -14,6 +14,7 @@ function renderWithTheme(ui, { ...options } = {}) {
     <ThemeProvider theme={theme}>
       <GlobalStyle />
       {children}
+      <div id='modal-root' />
     </ThemeProvider>
   )
 

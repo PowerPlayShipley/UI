@@ -47,15 +47,26 @@ const createData = (data) => {
   }))
 }
 
-const  FinesTable = ({ data: values, onToolbarClick, onItemClick, ...rest }) => {
+const FinesTable = ({ data: values, onToolbarClick, onItemClick, ...rest }) => {
   const columns = useMemo(() => createHeaders(values), [values])
   const data = useMemo(() => createData(values), [values])
 
   return (
     <Wrapper {...rest}>
-      <Table data={data} columns={columns} onToolbarClick={onToolbarClick} onItemClick={onItemClick} toolbarFloat='right' />
+      <Table className='table' data={data} columns={columns} onToolbarClick={onToolbarClick} onItemClick={onItemClick} toolbarFloat='right' />
     </Wrapper>
   )
+}
+
+FinesTable.propTypes = {
+  data: PropTypes.arrayOf(
+    PropTypes.shape({
+      player: PropTypes.string,
+      games: PropTypes.array
+    })
+  ).isRequired,
+  onToolbarClick: PropTypes.func,
+  onItemClick: PropTypes.func
 }
 
 export default FinesTable

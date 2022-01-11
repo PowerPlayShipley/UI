@@ -2,20 +2,32 @@ import styled, { } from "styled-components";
 
 const Wrapper = styled.div`
   display: block;
-  max-width: 100%;
-  
-  overflow: scroll visible;
+  width: 100%;
+  overflow-x: auto;
   
   & table {
     width: 100%;
-    height: auto;
+    max-width: 100%;
+    
+    .editable div {
+      flex-wrap: nowrap;
+    }
+    
+    .editable svg {
+      color: ${({ theme }) => theme.main.colors.text.subtle};
+    }
+  }
+  
+  & table {
     border: none;
+    height: auto;
 
     border-collapse: separate;
     border-spacing: 0 8px;
     
     th, td {
       width: 1%;
+      vertical-align: middle !important;
     }
 
     th {
@@ -68,19 +80,21 @@ const Wrapper = styled.div`
         border-bottom-right-radius: var(--border-radius-cell);
       }
     }
-    
-    // For only large devices
-    tbody td {
-      .toolbar {
-        visibility: hidden;
-        opacity: 0;
-        transition: visibility 0s, opacity 0.1s linear;
-      }
-      
-      &:hover {
+
+    @media (min-width: 767px) {
+      // For only large devices
+      tbody td {
         .toolbar {
-          visibility: visible;
-          opacity: 1;
+          visibility: hidden;
+          opacity: 0;
+          transition: visibility 0s, opacity 0.1s linear;
+        }
+
+        &:hover {
+          .toolbar {
+            visibility: visible;
+            opacity: 1;
+          }
         }
       }
     }

@@ -23,6 +23,8 @@ function withModal(Modal) {
 
     useEffect(() => {
       ReactTooltip.rebuild()
+      // Need this as sometimes the tooltip would stay
+      if (!isOpen) ReactTooltip.hide()
     }, [isOpen])
 
     useImperativeHandle(ref, () => ({
