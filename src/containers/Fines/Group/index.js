@@ -11,17 +11,16 @@ import PropTypes from 'prop-types'
 
 import Wrapper from "./Wrapper";
 
-import FinesTable from "../FinesTable";
-import Header from "../../components/Header";
-import Button from "../../components/Button";
-import { ModalSelector } from "../../components/Selector";
+import { Table, Selector } from "../";
+import Header from "../../../components/Header";
+import Button from "../../../components/Button";
 
 // Just set this, so we can update the right value in the database
 const getCellFromArgs = (index, value, { index: idx }, { id }) => {
   return { row: idx, col: parseInt(id.slice(-1)) }
 }
 
-const FinesGroup = ({ data, configuration, title, onFineAdded, onFineRemoved, ...rest }) => {
+const Group = ({ data, title, onFineAdded, onFineRemoved, ...rest }) => {
   const selector = useRef(null)
 
   // Add state management
@@ -43,33 +42,32 @@ const FinesGroup = ({ data, configuration, title, onFineAdded, onFineRemoved, ..
     onFineRemoved && onFineRemoved(index, value[index], cell)
   }, [onFineRemoved])
 
-  // Add any rendering for the selector here. Keep it cleaner
-  const renderSelector = (style) => (
-    <ModalSelector style={style} title='Select Fines' defaultOpen={false} onItemClicked={handleSelectorClicked}
-                   onCloseClicked={() => { selector.current.close(); setCell(null) }} ref={selector} items={configuration} />
-  )
-
   return (
     <Wrapper {...rest}>
       <div className='meta'>
         <Header level='h2' title={title} />
         <div className='btn-group'>
-          <Button title='Edit' state='primary' />
+          {/* This will stay here until I can figure if it's the right place for it */}
+          <Button title='Edit' state='primary' disabled />
         </div>
       </div>
-      <FinesTable data={data} onToolbarClick={(...args) => { setCell(getCellFromArgs(...args)); selector.current.open() }} onItemClick={handleItemClicked} />
-      {renderSelector({ alignSelf: 'center', margin: '8px auto', minWidth: '200px' })}
+      <Table data={data} onToolbarClick={(...args) => { setCell(getCellFromArgs(...args)); selector.current.open() }} onItemClick={handleItemClicked} />
+      <Selector onCloseClicked={() => { selector.current.close(); setCell(null) }} onItemClicked={handleSelectorClicked} ref={selector} />
     </Wrapper>
   )
 }
 
-FinesGroup.propTypes = {
+Group.propTypes = {
   // Will set this properly when I know exactly where it comes from and who manipulates this from the API response
-  data: PropTypes.array.isRequired,
-  configuration: PropTypes.array,
+  data: PropTypes.arrayOf(
+    PropTypes.shape({
+      player: PropTypes.string,
+      games: PropTypes.array
+    })
+  ).isRequired,
   title: PropTypes.string.isRequired,
   onFineAdded: PropTypes.func,
   onFineRemoved: PropTypes.func
 }
 
-export default FinesGroup
+export default Group

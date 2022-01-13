@@ -1,4 +1,4 @@
-import styled, { } from "styled-components";
+import styled from "styled-components";
 
 const Wrapper = styled.div`
   display: block;
@@ -48,6 +48,10 @@ const Wrapper = styled.div`
     }
     
     thead {
+      th {
+        text-align: center;
+      }
+      
       th:first-child {
         text-align: left;
       }

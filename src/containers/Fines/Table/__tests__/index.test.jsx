@@ -3,28 +3,52 @@
  */
 
 import React from 'react'
-import { renderWithTheme, fireEvent } from '../../../../__mocks__/theme-test-utils'
+import { renderWithTheme, fireEvent } from '../../../../../__mocks__/theme-test-utils'
 
 import FinesTable from "../index";
+import ConfigurationProvider from "../../../ConfigurationProvider";
+
+const configuration = {
+  fines: {},
+  players: {
+    AA: {
+      name: 'Ade'
+    },
+    TC: {
+      name: 'Tom Collins'
+    },
+    JD: {
+      name: 'Jamie'
+    }
+  }
+}
+
+const renderWithConfig = (fn, configuration, opts) => {
+  return renderWithTheme((
+    <ConfigurationProvider configuration={configuration}>
+      {fn()}
+    </ConfigurationProvider>
+  ), opts)
+}
 
 describe('Display FinesTable', function () {
   it('should create a valid snapshot', function () {
     const data = [
       {
-        player: 'Ade',
+        player: 'AA',
         games: [["H"], ["D", "H", "D", "D"], ["R"]]
       },
       {
-        player: 'Tom Collins',
+        player: 'TC',
         games: [[], ["H"], ["R"]]
       },
       {
-        player: 'Jamie',
+        player: 'JD',
         games: [["H", "D", "H", "D", "D"], ["D", "H"], ["R"]]
       }
     ]
 
-    const { container } = renderWithTheme(<FinesTable data={data} />)
+    const { container } = renderWithConfig(() => <FinesTable data={data} />, configuration)
     expect(container.firstChild).toMatchSnapshot()
   });
 
@@ -33,14 +57,14 @@ describe('Display FinesTable', function () {
 
     const data = [
       {
-        player: 'Ade',
+        player: 'AA',
         games: [
           ['H']
         ]
       }
     ]
 
-    const { getByText } = renderWithTheme(<FinesTable data={data} onItemClick={handleClick} />)
+    const { getByText } = renderWithConfig(() => <FinesTable data={data} onItemClick={handleClick} />, configuration)
 
     fireEvent.click(getByText('H').parentNode)
     expect(handleClick).toHaveBeenCalledTimes(1)
@@ -51,14 +75,14 @@ describe('Display FinesTable', function () {
 
     const data = [
       {
-        player: 'Ade',
+        player: 'AA',
         games: [
           ['H']
         ]
       }
     ]
 
-    const { container } = renderWithTheme(<FinesTable data={data} onToolbarClick={handleClick} />)
+    const { container } = renderWithConfig(() => <FinesTable data={data} onToolbarClick={handleClick} />, configuration)
 
     fireEvent.click(container.querySelector('svg'))
     expect(handleClick).toHaveBeenCalledTimes(1)

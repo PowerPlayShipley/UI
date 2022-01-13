@@ -1,11 +1,18 @@
-import React, { useMemo } from 'react'
+/**
+ * A wrapper for `Table` to handle the fines data.
+ *
+ * It will take already manipulated fines data and convert them to the headers and the valid data that
+ * `react-table` can read.
+ * */
+
+import React, { useMemo, memo } from 'react'
 import PropTypes from 'prop-types'
-import clsx from "clsx";
 
 import Wrapper from "./Wrapper";
 
-import Table from "../../components/Table";
-import EditableCell from "../../components/EditableCell";
+import TBL from "../../../components/Table";
+import EditableCell from "../../../components/EditableCell";
+import useConfiguration from "../../../hooks/useConfiguration";
 
 /**
  * @typedef {Object} RawData
@@ -36,29 +43,32 @@ const createHeaders = (data) => {
 
 /**
  * @param {RawData[]} data
+ * @param {Object} players
  * @returns {Object}
  * */
-const createData = (data) => {
+const createData = (data, players) => {
   return data.map((el) => ({
-    player: el.player,
+    player: el.player in players ? players[el.player].name : el.player,
     ...el.games.reduce(((previousValue, currentValue, currentIndex) => {
       return { ...previousValue, [`game${currentIndex+1}`]: currentValue }
     }), { })
   }))
 }
 
-const FinesTable = ({ data: values, onToolbarClick, onItemClick, ...rest }) => {
+const Table = ({ data: values, onToolbarClick, onItemClick, ...rest }) => {
+  const { players } = useConfiguration()
+
   const columns = useMemo(() => createHeaders(values), [values])
-  const data = useMemo(() => createData(values), [values])
+  const data = useMemo(() => createData(values, players), [values, players])
 
   return (
     <Wrapper {...rest}>
-      <Table className='table' data={data} columns={columns} onToolbarClick={onToolbarClick} onItemClick={onItemClick} toolbarFloat='right' />
+      {data.length > 0 && (<TBL className='table' data={data} columns={columns} onToolbarClick={onToolbarClick} onItemClick={onItemClick} toolbarFloat='right' />)}
     </Wrapper>
   )
 }
 
-FinesTable.propTypes = {
+Table.propTypes = {
   data: PropTypes.arrayOf(
     PropTypes.shape({
       player: PropTypes.string,
@@ -69,4 +79,4 @@ FinesTable.propTypes = {
   onItemClick: PropTypes.func
 }
 
-export default FinesTable
+export default memo(Table)

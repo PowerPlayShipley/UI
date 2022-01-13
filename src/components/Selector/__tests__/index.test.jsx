@@ -6,7 +6,6 @@ import React from 'react'
 import { fireEvent, renderWithTheme } from '../../../../__mocks__/theme-test-utils'
 
 import { Selector } from "../index";
-import ItemGrid from "../../ItemGrid";
 
 describe('Display Button', () => {
   it('should render cell', () => {
